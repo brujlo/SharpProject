@@ -17,6 +17,7 @@ namespace VelikaMalaSlova
         public Form1()
         {
             InitializeComponent();
+            fileNameAndPath = "";
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
