@@ -13,6 +13,7 @@ namespace VelikaMalaSlova
 {
     public partial class Form1 : Form
     {
+        private string fileNameAndPath;
         public Form1()
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace VelikaMalaSlova
             if (openFD.ShowDialog() == DialogResult.OK)
             {
                 StreamReader myStreamR = new StreamReader(File.OpenRead(openFD.FileName));
+                fileNameAndPath = openFD.FileName.ToString();
 
                 textBox1.Text = myStreamR.ReadToEnd();
                 myStreamR.Dispose();
