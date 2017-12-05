@@ -114,6 +114,7 @@
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
             this.openToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem1.Text = "Open";
+            this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem
             // 
@@ -163,6 +164,7 @@
             this.svaVelikaToolStripMenuItem.Name = "svaVelikaToolStripMenuItem";
             this.svaVelikaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.svaVelikaToolStripMenuItem.Text = "Sva Velika";
+            this.svaVelikaToolStripMenuItem.Click += new System.EventHandler(this.svaVelikaToolStripMenuItem_Click);
             // 
             // premaPravopisuToolStripMenuItem
             // 
