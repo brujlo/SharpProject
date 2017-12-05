@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Globalization;
 
 namespace VelikaMalaSlova
 {
     public partial class Form1 : Form
     {
         private string fileNameAndPath;
+        private Dictionary<string, string> dict;
+
         public Form1()
         {
             InitializeComponent();
@@ -81,6 +84,20 @@ namespace VelikaMalaSlova
             myStreamW.Write(textBox1.Text);
 
             myStreamW.Dispose();
+
+        }
+
+        private void premaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String obrada = textBox1.SelectedText;
+            CultureInfo currentCu = CultureInfo.CurrentCulture;
+
+            if (!currentCu.Name.Equals("hr-HR")) CultureInfo.CurrentCulture = new CultureInfo("hr_HR");
+
+            //CompareInfo.
+
+            MessageBox.Show(currentCu.Name);
+           
 
         }
     }

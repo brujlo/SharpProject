@@ -164,6 +164,7 @@ namespace VelikaMalaSlova
             this.premaPravopisuToolStripMenuItem.Name = "premaPravopisuToolStripMenuItem";
             this.premaPravopisuToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.premaPravopisuToolStripMenuItem.Text = "Prema Pravopisu";
+            this.premaPravopisuToolStripMenuItem.Click += new System.EventHandler(this.premaPravopisuToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
