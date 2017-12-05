@@ -77,15 +77,11 @@ namespace VelikaMalaSlova
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveDF = new SaveFileDialog();
-          
-            if (saveDF.ShowDialog() == DialogResult.OK)
-            {
-                StreamWriter myStreamW = new StreamWriter(File.Create(saveDF.FileName));
+            StreamWriter myStreamW = new StreamWriter(fileNameAndPath);
+            myStreamW.Write(textBox1.Text);
 
-                myStreamW.Write(textBox1.Text);
-                myStreamW.Dispose();
-            }
+            myStreamW.Dispose();
+
         }
     }
 }
