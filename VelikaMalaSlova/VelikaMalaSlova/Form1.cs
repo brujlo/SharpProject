@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace VelikaMalaSlova
 {
@@ -34,12 +35,27 @@ namespace VelikaMalaSlova
 
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            Stream myStream;
+
             OpenFileDialog fileDialog1 = new OpenFileDialog();
 
             if (fileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string strFileName = fileDialog1.FileName;
-                MessageBox.Show(strFileName);
+
+                myStream = fileDialog1.OpenFile();
+                if (myStream != null)
+                {
+                    textBox1.Text = File.ReadAllText(fileDialog1.FileName);
+                    
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (textBox1.TextLength > 0)
+            {
+                textBox1.Clear();
             }
         }
     }
