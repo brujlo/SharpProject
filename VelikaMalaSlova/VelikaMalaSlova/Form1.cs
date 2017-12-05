@@ -35,27 +35,53 @@ namespace VelikaMalaSlova
 
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Stream myStream;
+            OpenFileDialog openFD = new OpenFileDialog();
+            openFD.Title = "Find File";
+            openFD.Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*";
 
-            OpenFileDialog fileDialog1 = new OpenFileDialog();
-
-            if (fileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFD.ShowDialog() == DialogResult.OK)
             {
+                StreamReader myStreamR = new StreamReader(File.OpenRead(openFD.FileName));
 
-                myStream = fileDialog1.OpenFile();
-                if (myStream != null)
-                {
-                    textBox1.Text = File.ReadAllText(fileDialog1.FileName);
-                    
-                }
+                textBox1.Text = myStreamR.ReadToEnd();
+                myStreamR.Dispose();
             }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveAsToolStripMenuItem_Click(this, e);
             if (textBox1.TextLength > 0)
             {
                 textBox1.Clear();
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDF = new SaveFileDialog();
+            saveDF.Title = "save File";
+            saveDF.Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*";
+
+            if (saveDF.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter myStreamW = new StreamWriter(File.Create(saveDF.FileName));
+
+                myStreamW.Write(textBox1.Text);
+                myStreamW.Dispose();
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDF = new SaveFileDialog();
+          
+            if (saveDF.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter myStreamW = new StreamWriter(File.Create(saveDF.FileName));
+
+                myStreamW.Write(textBox1.Text);
+                myStreamW.Dispose();
             }
         }
     }

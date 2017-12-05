@@ -1,4 +1,6 @@
-﻿namespace VelikaMalaSlova
+﻿using System;
+
+namespace VelikaMalaSlova
 {
     partial class Form1
     {
@@ -40,11 +42,11 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.obradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.svaVelikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.premaPravopisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -125,12 +127,14 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveAsToolStripMenuItem.Text = "Save as...";
+            this.saveAsToolStripMenuItem.Text = "SaveAs...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -139,29 +143,14 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.aboutToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem1.Text = "About";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
-            // 
             // obradaToolStripMenuItem
             // 
             this.obradaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.svaVelikaToolStripMenuItem,
             this.premaPravopisuToolStripMenuItem});
             this.obradaToolStripMenuItem.Name = "obradaToolStripMenuItem";
-            this.obradaToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.obradaToolStripMenuItem.Text = "Obrada";
+            this.obradaToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.obradaToolStripMenuItem.Text = "Format";
             // 
             // svaVelikaToolStripMenuItem
             // 
@@ -175,6 +164,21 @@
             this.premaPravopisuToolStripMenuItem.Name = "premaPravopisuToolStripMenuItem";
             this.premaPravopisuToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.premaPravopisuToolStripMenuItem.Text = "Prema Pravopisu";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem1});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Text = "About";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -212,6 +216,7 @@
         private System.Windows.Forms.ToolStripMenuItem obradaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem svaVelikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem premaPravopisuToolStripMenuItem;
+        private EventHandler obradaToolStripMenuItem_Click;
     }
 }
 
