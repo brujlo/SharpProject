@@ -32,7 +32,7 @@ namespace VelikaMalaSlova
 
         private void svaVelikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            textBox1.SelectedText = textBox1.SelectedText.ToUpper();
         }
 
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
