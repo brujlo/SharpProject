@@ -15,59 +15,72 @@ namespace VelikaMalaSlova
     public partial class Form1 : Form
     {
         private string fileNameAndPath;
-        private Dictionary<string, string> dict;
+        private string stringBuffer;
+        public string FileNameAndPath { get => fileNameAndPath; set => fileNameAndPath = value; }
+
 
         public Form1()
         {
             InitializeComponent();
-            fileNameAndPath = "";
+            FileNameAndPath = "";
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (string.Compare(stringBuffer, textBox1.Text) != 0)
+                SaveAsToolStripMenuItem_Click(this, e);
             Application.Exit();
         }
 
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Autor: Bruno Brcković\n" + "Project startet: 04/12/2017", "Za C# projekt");
         }
 
-        private void svaVelikaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SvaVelikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textBox1.SelectedText = textBox1.SelectedText.ToUpper();
         }
 
-        private void openToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFD = new OpenFileDialog();
-            openFD.Title = "Find File";
-            openFD.Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*";
+            OpenFileDialog openFD = new OpenFileDialog
+            {
+                Title = "Find File",
+                Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*"
+            };
 
             if (openFD.ShowDialog() == DialogResult.OK)
             {
                 StreamReader myStreamR = new StreamReader(File.OpenRead(openFD.FileName));
-                fileNameAndPath = openFD.FileName.ToString();
+                FileNameAndPath = openFD.FileName.ToString();
 
                 textBox1.Text = myStreamR.ReadToEnd();
+                stringBuffer = textBox1.Text;
                 myStreamR.Dispose();
             }
         }
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveAsToolStripMenuItem_Click(this, e);
+            if (textBox1.TextLength != 0)
+            {
+                if (string.Compare(stringBuffer, textBox1.Text) != 0)
+                    SaveAsToolStripMenuItem_Click(this, e);
+            }
             if (textBox1.TextLength > 0)
             {
                 textBox1.Clear();
             }
         }
 
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveDF = new SaveFileDialog();
-            saveDF.Title = "save File";
-            saveDF.Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*";
+            SaveFileDialog saveDF = new SaveFileDialog
+            {
+                Title = "save File",
+                Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*"
+            };
 
             if (saveDF.ShowDialog() == DialogResult.OK)
             {
@@ -78,16 +91,16 @@ namespace VelikaMalaSlova
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StreamWriter myStreamW = new StreamWriter(fileNameAndPath);
+            StreamWriter myStreamW = new StreamWriter(FileNameAndPath);
             myStreamW.Write(textBox1.Text);
 
             myStreamW.Dispose();
 
         }
 
-        private void premaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PremaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String obrada = textBox1.SelectedText;
             CultureInfo currentCu = CultureInfo.CurrentCulture;
@@ -95,6 +108,8 @@ namespace VelikaMalaSlova
             if (!currentCu.Name.Equals("hr-HR")) CultureInfo.CurrentCulture = new CultureInfo("hr_HR");
 
             //CompareInfo.
+
+            //tekst.Split(new char[] { ' ', ',', '.', ':', '?', '!', ';', '\"' }, StringSplitOptions.RemoveEmptyEntries).Length;
 
             MessageBox.Show(currentCu.Name);
            
