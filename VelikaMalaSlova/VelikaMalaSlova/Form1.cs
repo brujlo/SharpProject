@@ -9,20 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace VelikaMalaSlova
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form //public partial class Form1 : Form
     {
         private string fileNameAndPath;
         private string stringBuffer;
-        public string FileNameAndPath { get => fileNameAndPath; set => fileNameAndPath = value; }
-
+        private string FileNameAndPath { get => fileNameAndPath; set => fileNameAndPath = value; }
 
         public Form1()
         {
             InitializeComponent();
             FileNameAndPath = "";
+            CultureInfo currentCu = CultureInfo.CurrentCulture;
+            if (!currentCu.Name.Equals("hr-HR")) CultureInfo.CurrentCulture = new CultureInfo("hr_HR");
+            this.label2.Text = ("CultureInfo: " + currentCu.Name);
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,18 +105,38 @@ namespace VelikaMalaSlova
 
         private void PremaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String obrada = textBox1.SelectedText;
-            CultureInfo currentCu = CultureInfo.CurrentCulture;
+            String temp =  textBox1.SelectedText.ToLower();
+            String[] obrada = Regex.Split(temp, @"(?<=[.?!\r\n])");
 
-            if (!currentCu.Name.Equals("hr-HR")) CultureInfo.CurrentCulture = new CultureInfo("hr_HR");
+            for (int i = 0; i < obrada.Length; ++i)
+            {
+                obrada[i] = ProvjeriString(obrada[i]);
+            }
 
-            //CompareInfo.
+            temp = "";
+            foreach (string element in obrada)
+            {
+                temp += element; 
+            }
 
-            //tekst.Split(new char[] { ' ', ',', '.', ':', '?', '!', ';', '\"' }, StringSplitOptions.RemoveEmptyEntries).Length;
+            textBox1.SelectedText = temp;
 
-            MessageBox.Show(currentCu.Name);
-           
+        }
 
+        private string ProvjeriString(string testiraj)
+        {
+            if (testiraj == "") return testiraj;
+
+            StringBuilder charCmp = new StringBuilder(testiraj);
+
+            if (Char.IsLetter(charCmp[0]))
+                return testiraj.First().ToString().ToUpper() + testiraj.Substring(1);
+            else if (Char.IsSeparator(charCmp[0]))
+            {
+                testiraj = testiraj.Trim();
+                return " " + testiraj.First().ToString().ToUpper() + testiraj.Substring(1);
+            }
+            return testiraj;
         }
     }
 }

@@ -47,6 +47,7 @@ namespace VelikaMalaSlova
             this.premaPravopisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,7 @@ namespace VelikaMalaSlova
             this.textBox1.Location = new System.Drawing.Point(13, 54);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(625, 343);
+            this.textBox1.Size = new System.Drawing.Size(625, 345);
             this.textBox1.TabIndex = 0;
             // 
             // label1
@@ -187,11 +188,24 @@ namespace VelikaMalaSlova
             this.aboutToolStripMenuItem1.Text = "&About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem1_Click);
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 402);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "CultureInfo: ";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 409);
+            this.ClientSize = new System.Drawing.Size(650, 415);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
@@ -223,7 +237,7 @@ namespace VelikaMalaSlova
         private System.Windows.Forms.ToolStripMenuItem obradaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem svaVelikaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem premaPravopisuToolStripMenuItem;
-        private EventHandler obradaToolStripMenuItem_Click;
+        private System.Windows.Forms.Label label2;
     }
 }
 
