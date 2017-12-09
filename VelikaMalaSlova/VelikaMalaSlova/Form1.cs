@@ -106,11 +106,17 @@ namespace VelikaMalaSlova
         private void PremaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String temp =  textBox1.SelectedText.ToLower();
+            int separatorFlag = 0;
             String[] obrada = Regex.Split(temp, @"(?<=[.?!\r\n])");
 
             for (int i = 0; i < obrada.Length; ++i)
             {
-                obrada[i] = ProvjeriString(obrada[i]);
+                obrada[i] = ProvjeriString(obrada[i], separatorFlag);
+
+                if (obrada[i].EndsWith("!") || obrada[i].EndsWith("?") || obrada[i].EndsWith("."))
+                    separatorFlag = 1;
+                else
+                    separatorFlag = 0;
             }
 
             temp = "";
@@ -123,13 +129,15 @@ namespace VelikaMalaSlova
 
         }
 
-        private string ProvjeriString(string testiraj)
+        private string ProvjeriString(string testiraj, int separatorFlag)
         {
             if (testiraj == "") return testiraj;
 
             StringBuilder charCmp = new StringBuilder(testiraj);
 
-            if (Char.IsLetter(charCmp[0]))
+            if (Char.IsLetter(charCmp[0]) && separatorFlag == 1)
+                return " " + testiraj.First().ToString().ToUpper() + testiraj.Substring(1);
+            else if (Char.IsLetter(charCmp[0]))
                 return testiraj.First().ToString().ToUpper() + testiraj.Substring(1);
             else if (Char.IsSeparator(charCmp[0]))
             {
