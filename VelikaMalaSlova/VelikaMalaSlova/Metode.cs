@@ -44,7 +44,6 @@ namespace VelikaMalaSlova
             }
 
             return testiraj;
-
         }
     }
 }

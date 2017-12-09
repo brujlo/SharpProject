@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace VelikaMalaSlova
 {
@@ -37,7 +36,7 @@ namespace VelikaMalaSlova
 
         private void AboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Autor: Bruno Brcković\n" + "Project startet: 04/12/2017", "Za C# projekt");
+            MessageBox.Show("Autor: Bruno Brcković\n" + "Project startet: 4.12.2017\n" + "Today date: " + DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year, "Za C# projekt");
         }
 
         private void SvaVelikaToolStripMenuItem_Click(object sender, EventArgs e)
