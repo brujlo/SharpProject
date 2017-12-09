@@ -105,45 +105,7 @@ namespace VelikaMalaSlova
 
         private void PremaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox1.SelectedText = ProvjeriString(textBox1.SelectedText.ToLower());
-        }
-
-        private string ProvjeriString(string testiraj)
-        {
-            int separatorFlag = 0;
-            String[] obrada = Regex.Split(testiraj, @"(?<=[.?!\r\n])");
-
-            testiraj = "";
-
-            for (int i = 0; i < obrada.Length; ++i)
-            {
-                if (obrada[i] == "") continue;
-
-                StringBuilder charCmp = new StringBuilder(obrada[i]);
-
-                if (Char.IsLetter(charCmp[0]) && separatorFlag == 1)
-                    obrada[i] = " " + obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
-                else if (Char.IsLetter(charCmp[0]))
-                    obrada[i] = obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
-                else if (Char.IsSeparator(charCmp[0]))
-                {
-                    obrada[i] = obrada[i].Trim();
-                    obrada[i] = " " + obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
-                }
-
-                if (obrada[i].EndsWith("!") || obrada[i].EndsWith("?") || obrada[i].EndsWith("."))
-                    separatorFlag = 1;
-                else
-                    separatorFlag = 0;
-            }
-
-            foreach (string element in obrada)
-            {
-                testiraj += element;
-            }
-
-            return testiraj;
-
+            textBox1.SelectedText = Metode.ProvjeriString(textBox1.SelectedText.ToLower());
         }
     }
 }
