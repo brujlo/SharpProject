@@ -105,13 +105,31 @@ namespace VelikaMalaSlova
 
         private void PremaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String temp =  textBox1.SelectedText.ToLower();
+            textBox1.SelectedText = ProvjeriString(textBox1.SelectedText.ToLower());
+        }
+
+        private string ProvjeriString(string testiraj)
+        {
             int separatorFlag = 0;
-            String[] obrada = Regex.Split(temp, @"(?<=[.?!\r\n])");
+            String[] obrada = Regex.Split(testiraj, @"(?<=[.?!\r\n])");
+
+            testiraj = "";
 
             for (int i = 0; i < obrada.Length; ++i)
             {
-                obrada[i] = ProvjeriString(obrada[i], separatorFlag);
+                if (obrada[i] == "") continue;
+
+                StringBuilder charCmp = new StringBuilder(obrada[i]);
+
+                if (Char.IsLetter(charCmp[0]) && separatorFlag == 1)
+                    obrada[i] = " " + obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
+                else if (Char.IsLetter(charCmp[0]))
+                    obrada[i] = obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
+                else if (Char.IsSeparator(charCmp[0]))
+                {
+                    obrada[i] = obrada[i].Trim();
+                    obrada[i] = " " + obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
+                }
 
                 if (obrada[i].EndsWith("!") || obrada[i].EndsWith("?") || obrada[i].EndsWith("."))
                     separatorFlag = 1;
@@ -119,32 +137,13 @@ namespace VelikaMalaSlova
                     separatorFlag = 0;
             }
 
-            temp = "";
             foreach (string element in obrada)
             {
-                temp += element; 
+                testiraj += element;
             }
 
-            textBox1.SelectedText = temp;
-
-        }
-
-        private string ProvjeriString(string testiraj, int separatorFlag)
-        {
-            if (testiraj == "") return testiraj;
-
-            StringBuilder charCmp = new StringBuilder(testiraj);
-
-            if (Char.IsLetter(charCmp[0]) && separatorFlag == 1)
-                return " " + testiraj.First().ToString().ToUpper() + testiraj.Substring(1);
-            else if (Char.IsLetter(charCmp[0]))
-                return testiraj.First().ToString().ToUpper() + testiraj.Substring(1);
-            else if (Char.IsSeparator(charCmp[0]))
-            {
-                testiraj = testiraj.Trim();
-                return " " + testiraj.First().ToString().ToUpper() + testiraj.Substring(1);
-            }
             return testiraj;
+
         }
     }
 }
