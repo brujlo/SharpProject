@@ -48,7 +48,7 @@ namespace VelikaMalaSlova
 
         public static bool ProvjeriSelektiraniTekst (int textSelected)
         {
-            return textSelected > 1 ? true : false; 
+            return textSelected > 0 ? true : false; 
         }
     }
 }

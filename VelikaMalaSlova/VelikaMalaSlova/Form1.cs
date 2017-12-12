@@ -51,7 +51,7 @@ namespace VelikaMalaSlova
         {
             OpenFileDialog openFD = new OpenFileDialog
             {
-                Title = "Find File",
+                Title = "Find file",
                 Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*"
             };
 
@@ -83,7 +83,7 @@ namespace VelikaMalaSlova
         {
             SaveFileDialog saveDF = new SaveFileDialog
             {
-                Title = "save File",
+                Title = "Save file",
                 Filter = "Text Files (*txt)|*.txt|All files(*.*)|*.*"
             };
 
