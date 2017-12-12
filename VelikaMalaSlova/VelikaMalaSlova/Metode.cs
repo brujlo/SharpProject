@@ -11,7 +11,7 @@ namespace VelikaMalaSlova
     {
         public static string ProvjeriString(string testiraj)
         {
-            int separatorFlag = 0;
+            bool separatorFlag = false;
             String[] obrada = Regex.Split(testiraj, @"(?<=[.?!\r\n])");
 
             testiraj = "";
@@ -22,7 +22,7 @@ namespace VelikaMalaSlova
 
                 StringBuilder charCmp = new StringBuilder(obrada[i]);
 
-                if (Char.IsLetter(charCmp[0]) && separatorFlag == 1)
+                if (Char.IsLetter(charCmp[0]) && separatorFlag)
                     obrada[i] = " " + obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
                 else if (Char.IsLetter(charCmp[0]))
                     obrada[i] = obrada[i].First().ToString().ToUpper() + obrada[i].Substring(1);
@@ -33,9 +33,9 @@ namespace VelikaMalaSlova
                 }
 
                 if (obrada[i].EndsWith("!") || obrada[i].EndsWith("?") || obrada[i].EndsWith("."))
-                    separatorFlag = 1;
+                    separatorFlag = true;
                 else
-                    separatorFlag = 0;
+                    separatorFlag = false;
             }
 
             foreach (string element in obrada)

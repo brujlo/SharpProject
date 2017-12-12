@@ -23,8 +23,12 @@ namespace VelikaMalaSlova
             InitializeComponent();
             FileNameAndPath = "";
             CultureInfo currentCu = CultureInfo.CurrentCulture;
+
             if (!currentCu.Name.Equals("hr-HR")) CultureInfo.CurrentCulture = new CultureInfo("hr_HR");
             this.label2.Text = ("CultureInfo: " + currentCu.Name);
+
+            this.svaVelikaToolStripMenuItem.Enabled = false;
+            this.premaPravopisuToolStripMenuItem.Enabled = false;
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)

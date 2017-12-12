@@ -63,6 +63,7 @@ namespace VelikaMalaSlova
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(625, 345);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -185,7 +186,7 @@ namespace VelikaMalaSlova
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem1.Text = "&About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem1_Click);
             // 
@@ -236,9 +237,9 @@ namespace VelikaMalaSlova
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem obradaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem svaVelikaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem premaPravopisuToolStripMenuItem;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.ToolStripMenuItem svaVelikaToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem premaPravopisuToolStripMenuItem;
     }
 }
 
