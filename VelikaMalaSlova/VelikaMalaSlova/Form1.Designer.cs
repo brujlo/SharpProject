@@ -63,7 +63,7 @@ namespace VelikaMalaSlova
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(625, 345);
             this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textBox1_PreviewKeyDown);
             // 
             // label1
             // 
@@ -157,6 +157,7 @@ namespace VelikaMalaSlova
             this.obradaToolStripMenuItem.Name = "obradaToolStripMenuItem";
             this.obradaToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.obradaToolStripMenuItem.Text = "Fo&rmat";
+            this.obradaToolStripMenuItem.Click += new System.EventHandler(this.obradaToolStripMenuItem_Click);
             // 
             // svaVelikaToolStripMenuItem
             // 

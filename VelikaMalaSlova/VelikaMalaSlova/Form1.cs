@@ -110,5 +110,17 @@ namespace VelikaMalaSlova
         {
             textBox1.SelectedText = Metode.ProvjeriString(textBox1.SelectedText.ToLower());
         }
+
+        private void obradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.svaVelikaToolStripMenuItem.Enabled = Metode.ProvjeriSelektiraniTekst(this.textBox1.SelectionLength);
+            this.premaPravopisuToolStripMenuItem.Enabled = Metode.ProvjeriSelektiraniTekst( this.textBox1.SelectionLength );
+        }
+
+        private void textBox1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            this.svaVelikaToolStripMenuItem.Enabled = Metode.ProvjeriSelektiraniTekst(this.textBox1.SelectionLength);
+            this.premaPravopisuToolStripMenuItem.Enabled = Metode.ProvjeriSelektiraniTekst(this.textBox1.SelectionLength);
+        }
     }
 }

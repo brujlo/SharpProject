@@ -45,5 +45,10 @@ namespace VelikaMalaSlova
 
             return testiraj;
         }
+
+        public static bool ProvjeriSelektiraniTekst (int textSelected)
+        {
+            return textSelected > 1 ? true : false; 
+        }
     }
 }
