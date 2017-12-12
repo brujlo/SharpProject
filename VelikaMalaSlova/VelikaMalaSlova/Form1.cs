@@ -15,7 +15,7 @@ namespace VelikaMalaSlova
     public partial class Form1 : Form //public partial class Form1 : Form
     {
         private string fileNameAndPath;
-        private string stringBuffer;
+        private string stringBuffer = "";
         private string FileNameAndPath { get => fileNameAndPath; set => fileNameAndPath = value; }
 
         public Form1()
@@ -26,7 +26,6 @@ namespace VelikaMalaSlova
 
             if (!currentCu.Name.Equals("hr-HR")) CultureInfo.CurrentCulture = new CultureInfo("hr_HR");
             this.label2.Text = ("CultureInfo: " + currentCu.Name);
-
             this.svaVelikaToolStripMenuItem.Enabled = false;
             this.premaPravopisuToolStripMenuItem.Enabled = false;
         }
@@ -103,7 +102,6 @@ namespace VelikaMalaSlova
             myStreamW.Write(textBox1.Text);
 
             myStreamW.Dispose();
-
         }
 
         private void PremaPravopisuToolStripMenuItem_Click(object sender, EventArgs e)
